@@ -71,5 +71,3 @@ def shortest_path(g, start, goal):
 
 build_graph('0000')
 path = shortest_path(graph, '0000', '1111')
-
-

@@ -6,6 +6,7 @@ import solver
 
 
 class BackgroundLayer(layer.Layer):
+
     def __init__(self):
         super(BackgroundLayer, self).__init__()
         self.image = sprite.Sprite(settings.BACKGROUND)
@@ -14,6 +15,7 @@ class BackgroundLayer(layer.Layer):
 
 
 class Animation(layer.Layer):
+
     def __init__(self):
         super(Animation, self).__init__()
 
@@ -50,7 +52,7 @@ class Animation(layer.Layer):
         boat_action = Place(settings.pos_of_boat['L']) + Delay(2)
 
         for state in states:
-            move = self.who_move(''.join([str(int(x) ^ int(y)) \
+            move = self.who_move(''.join([str(int(x) ^ int(y))
                                           for (x, y) in zip(current_state, state)]))
             current_state = state
 
@@ -65,17 +67,17 @@ class Animation(layer.Layer):
 
             if 'w' in move:  # wolf
                 wolf_action += Place((x, y + 10)) + MoveBy((t, 0), 2) \
-                               + Place(settings.pos_of_wolf[boat_location])
+                    + Place(settings.pos_of_wolf[boat_location])
                 sheep_action += Delay(2)
                 cabbage_action += Delay(2)
             elif 's' in move:  # sheep
                 sheep_action += Place((x, y + 10)) + MoveBy((t, 0), 2) \
-                                + Place(settings.pos_of_sheep[boat_location])
+                    + Place(settings.pos_of_sheep[boat_location])
                 cabbage_action += Delay(2)
                 wolf_action += Delay(2)
             elif 'c' in move:  # cabbage
                 cabbage_action += Place((x, y + 10)) + MoveBy((t, 0), 2) \
-                                  + Place(settings.pos_of_cabbage[boat_location])
+                    + Place(settings.pos_of_cabbage[boat_location])
                 sheep_action += Delay(2)
                 wolf_action += Delay(2)
             else:
@@ -84,7 +86,7 @@ class Animation(layer.Layer):
                 cabbage_action += Delay(2)
 
             farmer_action += Place((x + 20, y + 50)) + MoveBy((t, 0), 2) \
-                             + Place(settings.pos_of_farmer[boat_location])
+                + Place(settings.pos_of_farmer[boat_location])
             boat_action += MoveBy((t, 0), 2)
 
         self.farmer.do(farmer_action)
